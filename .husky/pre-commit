@@ -2,4 +2,5 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 # Run linters and formatters on staged files
-npx --no-install lint-staged
+npm run lint || exit 1
+npm run format:check || exit 1
