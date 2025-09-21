@@ -1,0 +1,55 @@
+{
+  "name": "specify-cli-node",
+  "version": "0.1.0",
+  "description": "Node.js CLI for Spec Kit (migration from Python)",
+  "type": "module",
+  "bin": {
+    "specify": "./bin/specify.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "pretest": "npm run build",
+    "test": "vitest run",
+    "test:coverage": "npm run build && vitest run --coverage",
+    "test:watch": "vitest",
+    "specify": "node ./bin/specify.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "prepublishOnly": "npm run build",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "fix": "npm run lint:fix && npm run format",
+    "prepare": "husky"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "cross-spawn": "^7.0.3",
+    "ora": "^8.0.1",
+    "picocolors": "^1.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.11.1",
+    "@types/node": "^22.7.5",
+    "@vitest/coverage-v8": "^1.6.1",
+    "ajv": "^8.17.1",
+    "eslint": "^9.11.1",
+    "eslint-config-prettier": "^9.1.0",
+    "globals": "^15.9.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.2",
+    "typescript-eslint": "^8.7.0",
+    "vitest": "^1.6.0"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx,css,md,json,yml,yaml}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/schemas/init.schema.json",
+  "type": "object",
+  "properties": {
+    "projectDir": { "type": "string", "minLength": 1 },
+    "agent": { "type": ["string", "null"] },
+    "scripts": {
+      "type": "object",
+      "properties": {
+        "sh": { "type": "string", "minLength": 1 },
+        "ps": { "type": "string", "minLength": 1 }
+      },
+      "required": ["sh", "ps"],
+      "additionalProperties": false
+    },
+    "templates": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "required": ["projectDir", "scripts", "templates"],
+  "additionalProperties": true
+}

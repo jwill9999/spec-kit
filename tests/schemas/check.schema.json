@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/schemas/check.schema.json",
+  "type": "object",
+  "required": ["git", "claude", "gemini", "cursor-agent", "qwen", "opencode", "windsurf"],
+  "additionalProperties": {
+    "type": "object",
+    "required": ["ok"],
+    "properties": {
+      "ok": { "type": "boolean" },
+      "version": { "type": ["string", "null"] }
+    },
+    "additionalProperties": true
+  }
+}
