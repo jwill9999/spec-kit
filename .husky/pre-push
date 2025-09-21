@@ -3,5 +3,5 @@
 
 # Fail fast on type errors or test failures before pushing
 npm run typecheck || exit 1
-npm run test-coverage || exit 1
+npm run test:coverage || exit 1
 npm run build || exit 1
