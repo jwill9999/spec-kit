@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./media/logo_small.png" alt="Spec Kit logo" />
+<img src="./media/logo_small.png" alt="Spec Kit logo" height="200px" width="200px"/>
   <h1>Node Spec-Kit </h1>
   <p><em>Spec-Driven Development, made simple.</em></p>
   
@@ -34,9 +34,16 @@ Spec Kit helps you build software from specifications, not code-first. Start a p
 
 ## Quick start
 
-From the repository root:
+### From the repository root:
 
-- make specify-wizard
+```text
+Linux/Mac
+> make specify-wizard
+
+Windows
+>  npm run wizard
+
+```
 
 This launches a simple, interactive wizard. It asks for a project name and your preferred AI assistant, then lays down the right command templates and scripts.
 

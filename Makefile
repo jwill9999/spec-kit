@@ -6,7 +6,7 @@ help:
 	@echo "  make specify-wizard  # Launch the project setup wizard"
 
 # --- Specify CLI wrapper (Wizard-only) ---
-specify-wizard:
+wizard:
 	@npm run --silent specify -- wizard -- $(args)
 
 coverage:
