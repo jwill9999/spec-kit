@@ -3,10 +3,10 @@ import pc from 'picocolors';
 import path from 'node:path';
 import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { getAgentTarget, isTomlAgent } from '../lib/agents';
-import { ensureDirSync, copyFileSyncAbs } from '../lib/fsutil';
-import { detectTools } from '../lib/detect';
-import { mdCommandToToml } from '../lib/tomlify';
+import { getAgentTarget, isTomlAgent } from '../lib/agents.js';
+import { ensureDirSync, copyFileSyncAbs } from '../lib/fsutil.js';
+import { detectTools } from '../lib/detect.js';
+import { mdCommandToToml } from '../lib/tomlify.js';
 
 export async function run(argv: string[] = process.argv as unknown as string[]) {
   const program = new Command();

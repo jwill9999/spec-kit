@@ -60,7 +60,7 @@ The Specify CLI is the primary interface for Spec Kit functionality. All operati
 
 All Spec Kit components MUST follow these quality standards:
 
-- **Version Management**: Any changes to CLI require version increment in pyproject.toml and CHANGELOG.md entries
+- **Version Management**: Any changes to CLI require version increment in project.toml and CHANGELOG.md entries
 - **Documentation**: All supported agents documented in AGENTS.md with integration patterns
 - **Testing**: New agent support requires validation across all command templates
 - **Error Handling**: Rich error messages with actionable guidance for users

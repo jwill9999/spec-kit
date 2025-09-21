@@ -2,9 +2,9 @@ name: Node CLI CI
 
 on:
   push:
-    branches: [main, master]
+    branches: [main]
   pull_request:
-    branches: [main, master]
+    types: [opened, synchronize, reopened, ready_for_review]
 
 jobs:
   test:
@@ -25,17 +25,26 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
+          cache-dependency-path: 'package-lock.json'
       - name: Install dependencies
         run: npm ci || npm install
+        shell: bash
       - name: Type check
         run: npm run typecheck
+      - name: Lint
+        run: npm run lint
+      - name: Check formatting
+        run: npm run format:check
+      - name: Build
+        run: npm run build
       - name: Run tests with coverage
-        run: npm run test:coverage
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
+        run: npm run test:coverage:ci
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
         with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: jwill9999/spec-kit
           files: ./coverage/lcov.info
           flags: ${{ runner.os }}
-          # For public repos, token is not required; set CODECOV_TOKEN secret for private repos
+          use_oidc: true
           fail_ci_if_error: false
-          verbose: true

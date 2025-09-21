@@ -114,7 +114,7 @@ Command instructions with {SCRIPT} and $ARGUMENTS placeholders
 
 ### Version Management
 
-- **Required**: Update `pyproject.toml` version for any `__init__.py` changes
+- **Required**: Update `project.toml` version for any `__init__.py` changes
 - **Required**: Add entries to `CHANGELOG.md` for version increments
 - Uses semantic versioning and automated release pipeline
 
