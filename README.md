@@ -10,6 +10,12 @@
     <a href="https://codecov.io/gh/jwill9999/spec-kit" >
       <img alt="Coverage" src="https://codecov.io/gh/jwill9999/spec-kit/branch/main/graph/badge.svg?token=" />
     </a>
+    <a href="https://www.npmjs.com/package/@letuscode/spec-kit">
+      <img alt="npm (scoped)" src="https://img.shields.io/npm/v/%40letuscode%2Fspec-kit.svg?label=npm%20latest" />
+    </a>
+    <a href="https://www.npmjs.com/package/@letuscode/spec-kit">
+      <img alt="npm beta" src="https://img.shields.io/npm/v/%40letuscode%2Fspec-kit/beta.svg?label=npm%20beta" />
+    </a>
   </p>
 </div>
 

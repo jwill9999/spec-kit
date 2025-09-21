@@ -26,6 +26,21 @@ npm test --silent
 
 ## Manual publish (recommended for now)
 
+### Quick reference
+
+Run these three commands to validate and inspect a beta publish:
+
+```bash
+# 1) Preview publish payload (no upload)
+npm publish --tag beta --access public --dry-run
+
+# 2) Inspect versions on npm
+npm view @letuscode/spec-kit versions --json
+
+# 3) Inspect dist-tags on npm
+npm dist-tag ls @letuscode/spec-kit
+```
+
 1. Authenticate to npm (scoped public packages):
 
 ```bash
@@ -36,7 +51,7 @@ npm login
 2. Verify publish payload without uploading:
 
 ```bash
-npm publish --tag beta --dry-run
+npm publish --tag beta --access public --dry-run
 ```
 
 3. Publish the prerelease to the `beta` dist-tag:
