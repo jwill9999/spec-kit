@@ -1,14 +1,14 @@
 {
   "name": "@letuscode/spec-kit",
-  "version": "0.1.0-beta.0",
+  "version": "0.1.0-beta.1",
   "description": "Node.js CLI for Spec Kit (migration from Python)",
   "type": "module",
   "bin": {
-    "specify": "bin/specify.js"
+    "speckit": "bin/speckit.js"
   },
   "files": [
     "dist",
-    "bin/specify.js",
+    "bin/speckit.js",
     "README.md",
     "LICENSE"
   ],
@@ -16,7 +16,8 @@
     "access": "public"
   },
   "scripts": {
-    "wizard": "npm run --silent specify -- wizard -- $(args)",
+    "test": "vitest run",
+    "wizard": "npm run --silent speckit -- wizard -- $(args)",
     "build": "tsc -p tsconfig.build.json",
     "pretest": "npm run build",
     "version:beta": "npm version prerelease --preid=beta --no-git-tag-version",
@@ -24,7 +25,7 @@
     "test:coverage": "npm run build && vitest run --coverage",
     "test:coverage:ci": "vitest run --coverage",
     "test:watch": "vitest",
-    "specify": "node ./bin/specify.js",
+    "speckit": "node ./bin/speckit.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc -p tsconfig.json --noEmit",

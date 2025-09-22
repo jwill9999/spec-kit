@@ -9,7 +9,7 @@
     // If no run is exported, the dist module is expected to self-execute via parseAsync.
   } catch (_err) {
     const msg =
-      'Specify CLI: compiled output missing. Please run "npm run build" (or "npm test" which builds first).';
+      'Speckit CLI: compiled output missing. Please run "npm run build" (or "npm test" which builds first).';
     try {
       console.error(JSON.stringify({ error: { message: msg } }));
     } catch {

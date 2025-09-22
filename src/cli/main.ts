@@ -21,7 +21,7 @@ export async function run(argv: string[] = process.argv as unknown as string[]) 
   ] as const;
 
   program
-    .name('specify')
+    .name('speckit')
     .description(
       'Spec Kit CLI — drive Spec-Driven Development (SDD): /constitution → /specify → /plan → /tasks → /implement.'
     )
@@ -46,9 +46,9 @@ export async function run(argv: string[] = process.argv as unknown as string[]) 
     [
       '',
       'Examples:',
-      '  $ specify check',
-      '  $ specify init my-app --ai claude',
-      '  $ specify init --here --ai copilot',
+      '  $ speckit check',
+      '  $ speckit init my-app --ai claude',
+      '  $ speckit init --here --ai copilot',
       '',
       `Supported agents: ${AI_CHOICES.join(', ')}`,
       'Docs: https://github.com/github/spec-kit#-specify-cli-reference',
@@ -134,7 +134,7 @@ export async function run(argv: string[] = process.argv as unknown as string[]) 
       return values[idx];
     }
 
-    (output as any).write(`${pc.bold(pc.green('Specify Wizard'))}\n`);
+    (output as any).write(`${pc.bold(pc.green('Speckit Wizard'))}\n`);
     (output as any).write("Let's set up your project with a few questions.\n\n");
 
     // Detect available tools for inline hints
@@ -290,7 +290,7 @@ export async function run(argv: string[] = process.argv as unknown as string[]) 
               // Clear screen and redraw header + banner + prompt + current input
               ttyOut.write('\u001b[2J'); // clear screen
               ttyOut.write('\u001b[H'); // cursor to home
-              ttyOut.write(`${pc.bold(pc.green('Specify Wizard'))}\n`);
+              ttyOut.write(`${pc.bold(pc.green('Speckit Wizard'))}\n`);
               ttyOut.write("Let's set up your project with a few questions.\n\n");
               renderPresetsBanner();
               ttyOut.write(promptText);
@@ -432,7 +432,7 @@ export async function run(argv: string[] = process.argv as unknown as string[]) 
         '  - IDE-based agents (copilot, windsurf) may not have a CLI; they are optional.',
         '',
         'Example:',
-        '  $ specify check --json | jq',
+        '  $ speckit check --json | jq',
       ].join('\n')
     );
 
@@ -574,12 +574,12 @@ export async function run(argv: string[] = process.argv as unknown as string[]) 
       [
         '',
         'Examples:',
-        '  $ specify init my-project --ai claude',
-        '  $ specify init --here --ai copilot',
-        '  $ specify init my-project --ai gemini --script ps',
-        '  $ specify init --interactive',
-        '  $ specify init my-project --ai claude --dry-run',
-        '  $ specify init -y                # accept suggested defaults',
+        '  $ speckit init my-project --ai claude',
+        '  $ speckit init --here --ai copilot',
+        '  $ speckit init my-project --ai gemini --script ps',
+        '  $ speckit init --interactive',
+        '  $ speckit init my-project --ai claude --dry-run',
+        '  $ speckit init -y                # accept suggested defaults',
         '',
         'Details:',
         '  - Copies agent-specific command templates into the correct directory structure.',
@@ -604,11 +604,11 @@ export async function run(argv: string[] = process.argv as unknown as string[]) 
       [
         '',
         'Examples:',
-        '  $ specify wizard',
-        '  $ specify wizard -y        # use persisted defaults without prompts',
+        '  $ speckit wizard',
+        '  $ speckit wizard -y        # use persisted defaults without prompts',
         '',
         'Notes:',
-        '  - Same as `specify init --interactive`.',
+        '  - Same as `speckit init --interactive`.',
         '  - With --yes, loads defaults from .specify/wizard.json and bypasses questions.',
         '  - Does not run interactive prompts when --json is provided; prints a suggested payload instead.',
       ].join('\n')
@@ -716,6 +716,14 @@ export async function run(argv: string[] = process.argv as unknown as string[]) 
         process.stdout.write(content + (content.endsWith('\n') ? '' : '\n'));
       }
     });
+
+  // If no command was provided (only the program name), run the wizard
+  if (argv.length <= 2) {
+    const answers = await runInitWizard(loadWizardDefaults());
+    saveWizardDefaults(answers);
+    await performInit(answers.projectName, answers);
+    return;
+  }
 
   await program.parseAsync(argv);
 }

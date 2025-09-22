@@ -2,28 +2,29 @@
 
 This guide will help you get started with Spec-Driven Development using Spec Kit.
 
-> NEW: All automation scripts now provide both Bash (`.sh`) and PowerShell (`.ps1`) variants. The `specify` CLI auto-selects based on OS unless you pass `--script sh|ps`.
+> Cross-platform support: All automation scripts provide both Bash (`.sh`) and PowerShell (`.ps1`) variants for full Windows, macOS, and Linux compatibility.
 
-## The 4-Step Process
+## The 3-Step Process
 
-### 1. Install Specify
+### 1. Install and Initialize
 
-Initialize your project depending on the coding agent you're using:
-
-```bash
-uvx --from git+https://github.com/github/spec-kit.git specify init <PROJECT_NAME>
-```
-
-Pick script type explicitly (optional):
+Install Spec Kit globally:
 
 ```bash
-uvx --from git+https://github.com/github/spec-kit.git specify init <PROJECT_NAME> --script ps  # Force PowerShell
-uvx --from git+https://github.com/github/spec-kit.git specify init <PROJECT_NAME> --script sh  # Force POSIX shell
+npm install -g @letuscode/spec-kit
 ```
+
+Initialize your project:
+
+```bash
+speckit
+```
+
+The interactive wizard will guide you through setup, including AI agent selection.
 
 ### 2. Create the Spec
 
-Use the `/specify` command to describe what you want to build. Focus on the **what** and **why**, not the tech stack.
+Use the `/specify` command in your AI agent to describe what you want to build. Focus on the **what** and **why**, not the tech stack.
 
 ```bash
 /specify Build an application that can help me organize my photos in separate photo albums. Albums are grouped by date and can be re-organized by dragging and dropping on the main page. Albums are never in other nested albums. Within each album, photos are previewed in a tile-like interface.
@@ -31,15 +32,15 @@ Use the `/specify` command to describe what you want to build. Focus on the **wh
 
 ### 3. Create a Technical Implementation Plan
 
-Use the `/plan` command to provide your tech stack and architecture choices.
+Use the `/plan` command in your AI agent to provide your tech stack and architecture choices.
 
 ```bash
 /plan The application uses Vite with minimal number of libraries. Use vanilla HTML, CSS, and JavaScript as much as possible. Images are not uploaded anywhere and metadata is stored in a local SQLite database.
 ```
 
-### 4. Break Down and Implement
+## Break Down and Implement
 
-Use `/tasks` to create an actionable task list, then ask your agent to implement the feature.
+Use `/tasks` to create an actionable task list, then `/implement` to have your AI agent implement the feature.
 
 ## Detailed Example: Building Taskify
 

@@ -7,9 +7,9 @@ import {
   writeFileSyncAbs,
   copyFileSyncAbs,
   pathIsInside,
-} from '../../src/lib/fsutil.ts';
+} from '../../src/lib/fsutil';
 
-let base;
+let base: string;
 
 describe('fsutil', () => {
   beforeEach(() => {

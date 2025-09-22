@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { spawnSync } from 'node:child_process';
 
 function run(args: string[]) {
-  return spawnSync('node', ['bin/specify.js', ...args], { encoding: 'utf8' });
+  return spawnSync('node', ['bin/speckit.js', ...args], { encoding: 'utf8' });
 }
 
 describe('specify check --json', () => {

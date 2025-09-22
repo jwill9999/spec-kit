@@ -10,7 +10,7 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
+/lib/
 lib64/
 parts/
 sdist/
@@ -44,3 +44,7 @@ node_modules/
 dist/
 .vitest/
 coverage/
+
+# Act (GitHub Actions local runner)
+.actrc
+act.json

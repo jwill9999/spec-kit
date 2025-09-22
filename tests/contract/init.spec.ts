@@ -7,7 +7,7 @@ import path from 'node:path';
 describe('specify init --json', () => {
   it('prints JSON with keys', () => {
     const tempCwd = mkdtempSync(path.join(tmpdir(), 'spec-kit-'));
-    const bin = path.resolve(process.cwd(), 'bin/specify.js');
+    const bin = path.resolve(process.cwd(), 'bin/speckit.js');
     try {
       const { status, stdout } = spawnSync(
         'node',

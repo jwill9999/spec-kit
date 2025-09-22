@@ -1,4 +1,0 @@
-#!/usr/bin/env node
-// Thin forwarder to the development entrypoint used by package.json bin mapping.
-// This ensures `./bin/specify` behaves the same as the published CLI during local dev.
-import('./specify.js');

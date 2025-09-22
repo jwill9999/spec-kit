@@ -70,7 +70,7 @@ describe('CLI main.ts (unit)', () => {
 
   it('check --json returns a JSON object with expected keys', async () => {
     const { runIt } = withCapturedIO(async () => {
-      await run(['node', 'specify', 'check', '--json']);
+      await run(['node', 'speckit', 'check', '--json']);
     });
     const { stdout } = await runIt();
     const obj = JSON.parse(stdout);
@@ -92,7 +92,7 @@ describe('CLI main.ts (unit)', () => {
 
   it('init --json --here --ai claude --dry-run returns a result envelope', async () => {
     const { runIt } = withCapturedIO(async () => {
-      await run(['node', 'specify', 'init', '--json', '--here', '--ai', 'claude', '--dry-run']);
+      await run(['node', 'speckit', 'init', '--json', '--here', '--ai', 'claude', '--dry-run']);
     });
     const { stdout } = await runIt();
     const obj = JSON.parse(stdout);
@@ -108,7 +108,7 @@ describe('CLI main.ts (unit)', () => {
 
   it('wizard --json returns a suggested payload', async () => {
     const { runIt } = withCapturedIO(async () => {
-      await run(['node', 'specify', 'wizard', '--json']);
+      await run(['node', 'speckit', 'wizard', '--json']);
     });
     const { stdout } = await runIt();
     const obj = JSON.parse(stdout);
@@ -120,7 +120,7 @@ describe('CLI main.ts (unit)', () => {
 
   it('init gemini --json --dry-run yields TOML templates in result list', async () => {
     const { runIt } = withCapturedIO(async () => {
-      await run(['node', 'specify', 'init', 'tmp-gem', '--json', '--ai', 'gemini', '--dry-run']);
+      await run(['node', 'speckit', 'init', 'tmp-gem', '--json', '--ai', 'gemini', '--dry-run']);
     });
     const { stdout } = await runIt();
     const obj = JSON.parse(stdout);
@@ -132,7 +132,7 @@ describe('CLI main.ts (unit)', () => {
 
   it('init copilot --json --dry-run yields .prompt.md templates in result list', async () => {
     const { runIt } = withCapturedIO(async () => {
-      await run(['node', 'specify', 'init', 'tmp-cop', '--json', '--ai', 'copilot', '--dry-run']);
+      await run(['node', 'speckit', 'init', 'tmp-cop', '--json', '--ai', 'copilot', '--dry-run']);
     });
     const { stdout } = await runIt();
     const obj = JSON.parse(stdout);
@@ -154,7 +154,7 @@ describe('CLI main.ts (unit)', () => {
       }
     }
     const { runIt } = withCapturedIO(async () => {
-      await run(['node', 'specify', 'prompts', '--json']);
+      await run(['node', 'speckit', 'prompts', '--json']);
     });
     const { stdout } = await runIt();
     const obj = JSON.parse(stdout);
@@ -175,7 +175,7 @@ describe('CLI main.ts (unit)', () => {
       // List
       let res = await (async () => {
         const { runIt } = withCapturedIO(async () => {
-          await run(['node', 'specify', 'prompts', '--json']);
+          await run(['node', 'speckit', 'prompts', '--json']);
         });
         return JSON.parse((await runIt()).stdout);
       })();
@@ -185,7 +185,7 @@ describe('CLI main.ts (unit)', () => {
       // Show specific
       res = await (async () => {
         const { runIt } = withCapturedIO(async () => {
-          await run(['node', 'specify', 'prompts', 'alpha', '--json']);
+          await run(['node', 'speckit', 'prompts', 'alpha', '--json']);
         });
         return JSON.parse((await runIt()).stdout);
       })();
@@ -195,7 +195,7 @@ describe('CLI main.ts (unit)', () => {
       // Not found branch
       res = await (async () => {
         const { runIt } = withCapturedIO(async () => {
-          await run(['node', 'specify', 'prompts', 'does-not-exist', '--json']);
+          await run(['node', 'speckit', 'prompts', 'does-not-exist', '--json']);
         });
         return JSON.parse((await runIt()).stdout);
       })();

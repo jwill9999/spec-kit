@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { agentDirs, getAgentTarget, isTomlAgent } from '../../src/lib/agents.ts';
+import { agentDirs, getAgentTarget, isTomlAgent } from '../../src/lib/agents';
 
 describe('agents helpers', () => {
   it('getAgentTarget returns path and format for known agents', () => {

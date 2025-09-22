@@ -2,17 +2,17 @@ import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { mkdtempSync, rmSync, readdirSync, statSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { spawnSync } from 'node:child_process';
+import { spawnSync, type SpawnSyncReturns } from 'node:child_process';
 
-function runIn(dir, args) {
-  return spawnSync('node', [path.resolve(process.cwd(), 'bin/specify.js'), ...args], {
+function runIn(dir: string, args: ReadonlyArray<string>): SpawnSyncReturns<string> {
+  return spawnSync('node', [path.resolve(process.cwd(), 'bin/speckit.js'), ...args], {
     cwd: dir,
     encoding: 'utf8',
   });
 }
 
 describe('init for claude', () => {
-  let tmp;
+  let tmp: string;
   beforeAll(() => {
     tmp = mkdtempSync(path.join(tmpdir(), 'spec-kit-'));
   });
@@ -27,7 +27,7 @@ describe('init for claude', () => {
   it('creates agent command templates under .claude/commands when --here', () => {
     const out = runIn(tmp, ['init', '--ai', 'claude', '--here', '--json']);
     expect(out.status).toBe(0);
-    const obj = JSON.parse(out.stdout);
+    const obj = JSON.parse(out.stdout) as { templates?: string[] };
     expect(obj).toHaveProperty('templates');
     expect(Array.isArray(obj.templates)).toBe(true);
     const commandsDir = path.join(tmp, '.claude', 'commands');

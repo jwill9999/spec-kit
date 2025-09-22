@@ -3,7 +3,7 @@ import { writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { tmpdir } from 'node:os';
 import { mkdtempSync, rmSync } from 'node:fs';
-import { convertFileToToml } from '../../src/lib/convert.js';
+import { convertFileToToml } from '../../src/lib/tomlify';
 
 describe('convertFileToToml', () => {
   it('reads markdown and returns TOML', () => {

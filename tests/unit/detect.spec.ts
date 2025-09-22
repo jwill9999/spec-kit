@@ -1,10 +1,10 @@
 import { describe, it, expect, vi } from 'vitest';
 
 // Dynamic map to control which tools are found by mocked `which/where`
-let found = {};
+let found: Record<string, boolean> = {};
 
 vi.mock('node:child_process', () => ({
-  spawnSync(cmd, args) {
+  spawnSync(cmd: string, args: string[]) {
     if ((cmd === 'which' || cmd === 'where') && Array.isArray(args)) {
       const name = args[0];
       if (found[name]) return { status: 0, stdout: `/usr/bin/${name}\n` };
@@ -27,7 +27,7 @@ describe('detectTools', () => {
       'codex-cli': false,
       codex: true,
     };
-    const { detectTools } = await import('../../src/lib/detect.ts');
+    const { detectTools } = await import('../../src/lib/detect');
     const res = await detectTools();
     expect(res.git.ok).toBe(true);
     expect(res.claude.ok).toBe(false);

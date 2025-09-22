@@ -1,7 +1,7 @@
 <div align="center">
-<img src="./media/logo_small.png" alt="Spec Kit logo" height="200px" width="200px"/>
+<img src="assets/img/logo_small.png" width="200" />
   <h1>Node Spec-Kit </h1>
-  <p><em>Spec-Driven Development, made simple.</em></p>
+  <p><em>Spec-Driven Development, made simple with Node.</em></p>
   
   <p>
     <a href="https://github.com/jwill9999/spec-kit/actions/workflows/node-ci.yml">
@@ -34,26 +34,27 @@ Spec Kit helps you build software from specifications, not code-first. Start a p
 
 ## Requirements
 
-- macOS/Linux (or WSL on Windows)
+- macOS/Linux/Windows
 - Node.js 20+
 - Git
 
 ## Quick start
 
-### From the repository root:
+### Installation
 
-```text
-Linux/Mac
-> make specify-wizard
+```bash
+npm install -g @letuscode/spec-kit
+```
 
-Windows
->  npm run wizard
+### Initialize a new project
 
+```bash
+speckit
 ```
 
 This launches a simple, interactive wizard. It asks for a project name and your preferred AI assistant, then lays down the right command templates and scripts.
 
-Tip: make help shows the one-liner above.
+Tip: You can also run `speckit --help` to see all available options.
 
 ## What it generates
 

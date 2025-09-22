@@ -2,88 +2,94 @@
 
 ## Prerequisites
 
-- **Linux/macOS** (or Windows; PowerShell scripts now supported without WSL)
-- AI coding agent: [Claude Code](https://www.anthropic.com/claude-code), [GitHub Copilot](https://code.visualstudio.com/), or [Gemini CLI](https://github.com/google-gemini/gemini-cli)
-- [uv](https://docs.astral.sh/uv/) for package management
-- [Python 3.11+](https://www.python.org/downloads/)
+- **Node.js 20+** and npm
+- **Linux/macOS/Windows** (cross-platform support)
+- AI coding agent: [Claude Code](https://www.anthropic.com/claude-code), [GitHub Copilot](https://code.visualstudio.com/), [Gemini CLI](https://github.com/google-gemini/gemini-cli), [Cursor](https://cursor.sh/), [Qwen Code](https://github.com/QwenLM/Qwen), [opencode](https://github.com/opencodeinterpreter/opencode), or [Windsurf](https://windsurf.com/)
 - [Git](https://git-scm.com/downloads)
 
 ## Installation
 
+### Global Installation (Recommended)
+
+Install the Spec Kit CLI globally via npm:
+
+```bash
+npm install -g @letuscode/spec-kit
+```
+
 ### Initialize a New Project
 
-The easiest way to get started is to initialize a new project:
+After installation, simply run:
 
 ```bash
-uvx --from git+https://github.com/github/spec-kit.git specify init <PROJECT_NAME>
+speckit
 ```
 
-Or initialize in the current directory:
+This launches the interactive wizard that will guide you through project setup.
+
+### Command Options
+
+You can also use specific commands directly:
 
 ```bash
-uvx --from git+https://github.com/github/spec-kit.git specify init --here
-```
+# Run the interactive wizard
+speckit
 
-### Specify AI Agent
+# Initialize in current directory
+speckit init --here
 
-You can proactively specify your AI agent during initialization:
+# Initialize with specific AI agent
+speckit init --ai claude
+speckit init --ai gemini
+speckit init --ai copilot
+speckit init --ai cursor
+speckit init --ai qwen
+speckit init --ai opencode
+speckit init --ai windsurf
 
-```bash
-uvx --from git+https://github.com/github/spec-kit.git specify init <project_name> --ai claude
-uvx --from git+https://github.com/github/spec-kit.git specify init <project_name> --ai gemini
-uvx --from git+https://github.com/github/spec-kit.git specify init <project_name> --ai copilot
-```
+# Check prerequisites
+speckit check
 
-### Specify Script Type (Shell vs PowerShell)
-
-All automation scripts now have both Bash (`.sh`) and PowerShell (`.ps1`) variants.
-
-Auto behavior:
-
-- Windows default: `ps`
-- Other OS default: `sh`
-- Interactive mode: you'll be prompted unless you pass `--script`
-
-Force a specific script type:
-
-```bash
-uvx --from git+https://github.com/github/spec-kit.git specify init <project_name> --script sh
-uvx --from git+https://github.com/github/spec-kit.git specify init <project_name> --script ps
-```
-
-### Ignore Agent Tools Check
-
-If you prefer to get the templates without checking for the right tools:
-
-```bash
-uvx --from git+https://github.com/github/spec-kit.git specify init <project_name> --ai claude --ignore-agent-tools
+# Show help
+speckit --help
 ```
 
 ## Verification
 
-After initialization, you should see the following commands available in your AI agent:
+After installation and initialization, you should see the following commands available in your AI agent:
 
+- `/constitution` - Set project principles
 - `/specify` - Create specifications
 - `/plan` - Generate implementation plans
 - `/tasks` - Break down into actionable tasks
+- `/implement` - Build according to the plan
 
-The `.specify/scripts` directory will contain both `.sh` and `.ps1` scripts.
+The project directory will contain both `.sh` and `.ps1` scripts for cross-platform compatibility.
 
 ## Troubleshooting
 
-### Git Credential Manager on Linux
+### Permission Issues
 
-If you're having issues with Git authentication on Linux, you can install Git Credential Manager:
+If you encounter permission issues after `npm link` during development:
 
 ```bash
-#!/usr/bin/env bash
-set -e
-echo "Downloading Git Credential Manager v2.6.1..."
-wget https://github.com/git-ecosystem/git-credential-manager/releases/download/v2.6.1/gcm-linux_amd64.2.6.1.deb
-echo "Installing Git Credential Manager..."
-sudo dpkg -i gcm-linux_amd64.2.6.1.deb
-echo "Configuring Git to use GCM..."
-git config --global credential.helper manager
-echo "Cleaning up..."
-rm gcm-linux_amd64.2.6.1.deb
+chmod +x bin/speckit
+chmod +x bin/speckit.js
+```
+
+### Node.js Version
+
+Ensure you're using Node.js 20 or higher:
+
+```bash
+node --version
+```
+
+### Git Configuration
+
+Make sure Git is properly configured:
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
 ```
