@@ -7,9 +7,16 @@ let found: Record<string, boolean> = {};
 // Mock child_process used by services/check.ts's internal `which()` helper
 vi.mock('node:child_process', () => ({
   spawnSync(cmd: string, args: string[]) {
-    if (cmd === 'which' && Array.isArray(args)) {
+    // Handle both Unix 'which' and Windows 'where'
+    if ((cmd === 'which' || cmd === 'where') && Array.isArray(args)) {
       const name = args[0];
-      if (found[name]) return { status: 0, stdout: `/usr/bin/${name}\n` };
+      if (found[name]) {
+        const path =
+          process.platform === 'win32'
+            ? `C:\\Program Files\\${name}\\${name}.exe`
+            : `/usr/bin/${name}`;
+        return { status: 0, stdout: `${path}\n` };
+      }
       return { status: 1, stdout: '' };
     }
     return { status: 0, stdout: '' };
