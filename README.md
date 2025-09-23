@@ -21,6 +21,8 @@
 
 ---
 
+> ### [Node Spec-Kit Homepage](http://letuscode.co.uk/spec-kit/)
+
 > ## Disclaimer
 >
 > This Spec Kit is a fork of GitHub's original repository [spec-kit](https://github.com/github/spec-kit.git.)\
@@ -30,7 +32,13 @@
 
 ## Overview
 
-Spec Kit helps you build software from specifications, not code-first. Start a project with a short guided wizard and get agent-ready commands plus a clean structure for writing specs, plans, and tasks.
+This is an NPM package built upon the foundations of GitHubs own Spec-Kit.
+
+It implements a simple wizard that steps you though the initial setup and allows you to save preset configurations for different environments.
+
+Start a project with by running `speckit` in your terminal, and let the wizard configure your Spec-Kit tooling.
+
+Then follow the steps below
 
 ## Requirements
 
@@ -69,17 +77,17 @@ Depending on the AI assistant you pick, the wizard creates agent-specific comman
 
 It also includes cross-platform helper scripts under scripts/ and prepares a space for your specifications (see specs/ when you start a feature).
 
-## Workflow at a glance
+## Workflow steps at a glance
 
-Spec-Driven Development follows a simple five-step flow you’ll run inside your AI assistant:
+Once you have completed the `wizard` use your chosen environment i.e VSCode to run the prompt commands in.
 
-- /constitution → set project principles
-- /specify → write the feature spec (what/why)
-- /plan → design the technical approach
-- /tasks → break down implementation
-- /implement → build according to the plan
+## Steps
 
-Read more in spec-driven.md for the detailed methodology.
+1. /constitution → set project principles
+2. /specify → write the feature spec (what/why)
+3. /plan → design the technical approach
+4. /tasks → break down implementation
+5. /implement → build according to the plan
 
 ## Troubleshooting
 
