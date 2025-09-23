@@ -1,5 +1,5 @@
 <div align="center">
-<img src="assets/img/logo_small.png" width="200" />
+<img src="https://raw.githubusercontent.com/jwill9999/spec-kit/main/assets/img/logo_small.png" width="200" />
   <h1>Node Spec-Kit </h1>
   <p><em>Spec-Driven Development, made simple with Node.</em></p>
   
