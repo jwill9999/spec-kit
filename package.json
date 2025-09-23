@@ -2,7 +2,25 @@
   "name": "@letuscode/spec-kit",
   "version": "0.1.0",
   "description": "Node.js CLI for Spec Kit (migration from Python)",
+  "keywords": [
+    "spec-kit",
+    "specify",
+    "spec-driven-development",
+    "cli",
+    "ai-agents",
+    "developer-tools"
+  ],
   "type": "module",
+  "license": "MIT",
+  "author": "Jason Williams (https://github.com/jwill9999)",
+  "homepage": "https://github.com/jwill9999/spec-kit#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jwill9999/spec-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jwill9999/spec-kit/issues"
+  },
   "bin": {
     "speckit": "bin/speckit.js"
   },
