@@ -25,8 +25,11 @@
     "speckit": "bin/speckit.js"
   },
   "files": [
-    "dist",
-    "bin/speckit.js",
+    "dist/",
+    "bin/",
+    "src/",
+    "templates/",
+    "scripts/",
     "README.md",
     "LICENSE"
   ],
