@@ -1,9 +1,0 @@
-{
-  "ai": "copilot",
-  "script": "sh",
-  "here": true,
-  "noGit": false,
-  "ignoreAgentTools": true,
-  "debug": false,
-  "lastProjectName": "test2"
-}
