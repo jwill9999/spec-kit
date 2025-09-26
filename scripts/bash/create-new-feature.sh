@@ -36,9 +36,12 @@ fi
 NEXT=$((HIGHEST + 1))
 FEATURE_NUM=$(printf "%03d" "$NEXT")
 
-BRANCH_NAME=$(echo "$FEATURE_DESCRIPTION" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/-\+/-/g' | sed 's/^-//' | sed 's/-$//')
-WORDS=$(echo "$BRANCH_NAME" | tr '-' '\n' | grep -v '^$' | head -3 | tr '\n' '-' | sed 's/-$//')
-BRANCH_NAME="${FEATURE_NUM}-${WORDS}"
+
+# Slugify description (lowercase, alphanum, dash, max 8 words)
+SLUG=$(echo "$FEATURE_DESCRIPTION" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/-\+/-/g' | sed 's/^-//' | sed 's/-$//' | cut -d- -f1-8)
+# Unique suffix: date + 4 random chars
+UNIQ=$(date +%Y%m%d)-$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w4 | head -n1)
+BRANCH_NAME="${FEATURE_NUM}-${SLUG}-${UNIQ}"
 
 git checkout -b "$BRANCH_NAME"
 

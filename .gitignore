@@ -44,6 +44,7 @@ node_modules/
 dist/
 .vitest/
 coverage/
+specs/
 
 # Act (GitHub Actions local runner)
 .actrc
